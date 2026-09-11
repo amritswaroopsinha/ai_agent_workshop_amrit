@@ -103,7 +103,7 @@ func intersectRegion(a, b Interval) (Interval, bool) {
 	}
 	start := max(a.Start, effBStart)
 	end := min(a.End, effBEnd)
-	eligible := start < end || (a.IsZeroLength() && start <= end)
+	eligible := start <= end
 	if !eligible {
 		return Interval{}, false
 	}
