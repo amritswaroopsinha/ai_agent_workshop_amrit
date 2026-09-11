@@ -53,9 +53,7 @@ func cmdSubtract(args []string) error {
 
 	var out []Interval
 	for _, a := range aIvs {
-		for _, piece := range subtractOne(a, byChrom[a.Chrom]) {
-			out = append(out, piece)
-		}
+		out = append(out, subtractOne(a, byChrom[a.Chrom])...)
 	}
 
 	return writeLines(os.Stdout, out)
