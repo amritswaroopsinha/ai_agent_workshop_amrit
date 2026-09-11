@@ -120,8 +120,11 @@ func mergeIntervals(ivs []Interval, d int) []Interval {
 			continue
 		}
 		tolerance := 0
-		if iv.IsZeroLength() || groupEndIsZero {
-			tolerance = 1
+		if iv.IsZeroLength() {
+			tolerance++
+		}
+		if groupEndIsZero {
+			tolerance++
 		}
 		if iv.Start-groupEnd <= d+tolerance {
 			groupCount++
